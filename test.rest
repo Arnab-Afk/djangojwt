@@ -1,5 +1,5 @@
-### Signup
-POST http://localhost:8000/signup/
+### Signup a New User
+POST http://127.0.0.1:8000/signup/
 Content-Type: application/json
 
 {
@@ -8,10 +8,8 @@ Content-Type: application/json
   "email": "testuser@example.com"
 }
 
-###
-
-### Login
-POST http://localhost:8000/login/
+### Login with the New User
+POST http://127.0.0.1:8000/login/
 Content-Type: application/json
 
 {
@@ -19,9 +17,6 @@ Content-Type: application/json
   "password": "testpassword"
 }
 
-###
-
-### Test Token
-# Replace <TOKEN> with the actual token returned from the login endpoint
-GET http://localhost:8000/test_token/
-Authorization: Token 9ac8921fdf608e51f6904c7f954ffc8a54b00415
+### Test Token (Replace <access_token> with the token received from the login response)
+GET http://127.0.0.1:8000/test-token/
+Authorization: Bearer <access_token>
