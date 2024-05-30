@@ -41,3 +41,14 @@ def login(request):
 @permission_classes([IsAuthenticated])
 def test_token(request):
     return Response("passed!")
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def index(request):
+    try:
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_401_UNAUTHORIZED)
